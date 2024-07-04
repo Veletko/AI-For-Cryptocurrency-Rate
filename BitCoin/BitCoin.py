@@ -18,7 +18,7 @@ frame_main = tk.Frame(window, width=600, height=550, bg = "#0f3464")
 frame_statistic.grid(row = 0, column = 1, sticky="nswe")
 frame_main.grid(row = 0, column = 0,sticky="nswe")
 
-#диаграмма
+#Chart
 pairs = ["BTC/USD","ETH/USD"]
 # style = ttk.Style()
 # style.configure("My.TCombobox", background="gray1", foreground='dodgerblue1') 
@@ -36,44 +36,43 @@ combobox.place(x=80,y=10)
 
 
 
-# ###ГРАФИК 
+# ###Plot
 
 fig = Figure(figsize=(5, 4), dpi=100)
 plot = fig.add_subplot(1, 1, 1)
-plot.plot([1, 2, 3, 4], [1, 4, 9, 16])  # Пример данных для графика
+plot.plot([1, 2, 3, 4], [1, 4, 9, 16])  # ГЏГ°ГЁГ¬ГҐГ° Г¤Г Г­Г­Г»Гµ Г¤Г«Гї ГЈГ°Г ГґГЁГЄГ 
 
-# Кнопка для обновления графика
+# Update button
 button = tk.Button(frame_main, text = "Update", fg = "white", bg = "gray") #command = update_plot
 button.grid(row=1, column=0, padx = 10,pady =10, sticky= "w")
 
 
-# # Создаем холст для отображения графика в Tkinter
+
 canvas = FigureCanvasTkAgg(fig, master= frame_main)
 canvas.draw()
 canvas.get_tk_widget().grid(row=2, column=0, rowspan=3, sticky="nsew")
 
-# Функция для обновления графика (можно изменить данные или стиль графика)
+
 def update_plot():
     plot.clear()
-    plot.plot([1, 2, 3, 4], [1, 8, 27, 64], 'r--')  # Новые данные для графика
+    plot.plot([1, 2, 3, 4], [1, 8, 27, 64], 'r--')  # ГЌГ®ГўГ»ГҐ Г¤Г Г­Г­Г»ГҐ Г¤Г«Гї ГЈГ°Г ГґГЁГЄГ 
     canvas.draw()
 
 
 
 
 
-####ебанные кнопки
+####buttons (week/month/year)
 def change_button_color(button):
-    # Сбрасываем цвет предыдущей выбранной кнопки
+    # Г‘ГЎГ°Г Г±Г»ГўГ ГҐГ¬ Г¶ГўГҐГІ ГЇГ°ГҐГ¤Г»Г¤ГіГ№ГҐГ© ГўГ»ГЎГ°Г Г­Г­Г®Г© ГЄГ­Г®ГЇГЄГЁ
     for b in buttons:
         if b != button:
-            b.config(bg="SystemButtonFace")  # Возвращаем стандартный цвет
+            b.config(bg="SystemButtonFace")  
 
-    # Изменяем цвет выбранной кнопки
+    
     button.config(bg="dodgerblue4")
 
 
-# Создаем кнопки
 frame_button = tk.Frame(window,bg = "#0f3464", padx=50)
 frame_button.grid(row=5, column=0, sticky="nsew")
 
@@ -88,7 +87,7 @@ for i, label in enumerate(button_labels):
 
 
 
-###таблица
+###Table
 data = [
     ["1", "2", "3"],
     ["4", "5", "6"],
